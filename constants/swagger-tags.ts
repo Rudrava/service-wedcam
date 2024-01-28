@@ -5,23 +5,23 @@ interface Tag extends TagObject {
   description?: string;
 }
 
-const auth: Tag = {
+const authTag: Tag = {
   name: 'Auth',
 };
-const user: Tag = {
+const userTag: Tag = {
   name: 'User',
 };
-const admin: Tag = {
+const adminTag: Tag = {
   name: 'Admin',
 };
 
-const event: Tag = {
+const eventTag: Tag = {
   name: 'Event',
 };
 
 export default {
-  auth,
-  user,
-  admin,
-  community: event,
+  authTag,
+  userTag,
+  adminTag,
+  eventTag,
 };

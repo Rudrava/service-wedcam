@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { baseConfig, dbConfig } from 'config';
+import { baseConfig, dbConfig, jwtConfig } from 'config';
 import { validationSchema } from 'config/validator';
 import { DatabaseModule } from './db.module';
 import { UserModule } from './user/user.module';
@@ -10,7 +10,7 @@ import { AuthModule } from './auth/auth.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [baseConfig, dbConfig],
+      load: [baseConfig, dbConfig, jwtConfig],
       validationSchema,
       validationOptions: {
         abortEarly: true,

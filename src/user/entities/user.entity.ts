@@ -21,13 +21,21 @@ export class User {
     name: 'first_name',
     type: 'text',
     default: null,
+    nullable: true,
   })
   firstName: string;
+
+  @Column({
+    type: 'text',
+    nullable: false,
+  })
+  email: string;
 
   @Column({
     name: 'last_name',
     type: 'text',
     default: null,
+    nullable: true,
   })
   lastName: string;
 

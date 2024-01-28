@@ -11,4 +11,7 @@ export const validationSchema: joi.ObjectSchema<Record<string, string>> =
     DB_PASSWORD: joi.string().required(),
     DB_PORT: joi.string().default(5432),
     DB_NAME: joi.string().required(),
+    JWT_SECRET: joi.string().required(),
+    JWT_EXPIRE_AFTER: joi.string().required(),
+    JWT_ISSUER: joi.string().required(),
   });
