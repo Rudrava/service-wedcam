@@ -4,7 +4,7 @@ Day 1 - 1
 - [x] setup docker
 - [x] setup env
 - [x] setup env validator
-- [ ] setup postgres
+- [x] setup postgres
 - [x] setup swagger docs
 
 Day 1 - 2
