@@ -1,8 +1,9 @@
 Day 1 - 1
 
 - [x] setup nestjs
-- [ ] setup postgres
 - [ ] setup docker
+- [ ] setup env
+- [ ] setup postgres
 - [ ] setup swagger docs
 
 Day 1 - 2
