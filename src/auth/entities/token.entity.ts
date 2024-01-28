@@ -15,7 +15,9 @@ export class Token {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => User)
+  @ManyToOne(() => User, {
+    eager: true,
+  })
   @JoinColumn({ name: 'user_id' })
   user: User;
 

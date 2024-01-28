@@ -11,6 +11,7 @@ async function bootstrap() {
     .setTitle('WedCam Apis')
     .setDescription('This is the api docs for Wedcam')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
   config.tags = Object.values(tags);
 

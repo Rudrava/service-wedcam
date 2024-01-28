@@ -46,6 +46,12 @@ export class AuthService {
     return token;
   }
 
+  async getTokenById(id: string) {
+    return this.tokenRepo.findOneByOrFail({
+      id,
+    });
+  }
+
   async login(data: LoginDto) {
     try {
       const user = await this.userService.findOneByEmail(data.email, true);

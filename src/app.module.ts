@@ -5,6 +5,7 @@ import { validationSchema } from 'config/validator';
 import { DatabaseModule } from './db.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { JwtStrategy } from './auth/jwt';
 
 @Module({
   imports: [
@@ -21,6 +22,6 @@ import { AuthModule } from './auth/auth.module';
     AuthModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [JwtStrategy],
 })
 export class AppModule {}
