@@ -3,9 +3,9 @@ Day 1 - 1
 - [x] setup nestjs
 - [x] setup docker
 - [x] setup env
-- [ ] setup env validator
+- [x] setup env validator
 - [ ] setup postgres
-- [ ] setup swagger docs
+- [x] setup swagger docs
 
 Day 1 - 2
 
