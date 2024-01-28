@@ -1,9 +1,13 @@
+version: '3'
+
 services:
   server:
     build:
       context: .
     environment:
       NODE_ENV: production
+    env_file:
+      - .env
     ports:
       - 8080:8080
     depends_on:
@@ -31,3 +35,6 @@ services:
 
 volumes:
   wedcam-db-data:
+
+networks: 
+wedcam
