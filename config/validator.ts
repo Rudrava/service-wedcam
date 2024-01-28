@@ -7,4 +7,8 @@ export const validationSchema: joi.ObjectSchema<Record<string, string>> =
       .string()
       .valid('development', 'production', 'test', 'provision')
       .default('development'),
+    DB_USERNAME: joi.string().required(),
+    DB_PASSWORD: joi.string().required(),
+    DB_PORT: joi.string().default(5432),
+    DB_NAME: joi.string().required(),
   });
