@@ -2,9 +2,9 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { baseConfig, dbConfig } from 'config';
 import { validationSchema } from 'config/validator';
-import { UserModule } from './user/user.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { DatabaseModule } from './db.module';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -18,6 +18,7 @@ import { DatabaseModule } from './db.module';
     }),
     DatabaseModule,
     UserModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
