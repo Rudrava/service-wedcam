@@ -1,0 +1,11 @@
+Day 1 - 1
+
+- [x] setup nestjs
+- [ ] setup postgres
+- [ ] setup docker
+- [ ] setup swagger docs
+
+Day 1 - 2
+
+- [ ] setup auth (according to spec mentioned in README.md#authorization-spec)
+- [ ] setup auth guard
