@@ -6,6 +6,7 @@ import { DatabaseModule } from './db.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { JwtStrategy } from './auth/jwt';
+import { EventModule } from './event/event.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { JwtStrategy } from './auth/jwt';
     DatabaseModule,
     UserModule,
     AuthModule,
+    EventModule,
   ],
   controllers: [],
   providers: [JwtStrategy],
