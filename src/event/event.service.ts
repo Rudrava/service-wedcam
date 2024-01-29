@@ -115,6 +115,6 @@ export class EventService {
       },
     });
 
-    return events.map((e) => e.event);
+    return events.map((e) => ({ ...e.event, isOwner: e.isOwner }));
   }
 }
