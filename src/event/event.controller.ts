@@ -77,7 +77,7 @@ export class EventController {
     required: true,
   })
   @Get('/:id')
-  getEventById(@Param('id') id: string) {
-    return this.eventService.getById(id);
+  getEventById(@CurrentUser() user: User, @Param('id') id: string) {
+    return this.eventService.getById(id, user.id);
   }
 }

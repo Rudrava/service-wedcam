@@ -40,6 +40,8 @@ export class EventService {
       description: data.description,
       startAt: new Date(data.startAt),
       endAt: new Date(data.endAt),
+      venue: data.venue,
+      estimatedParticipants: data.estimatedParticipants,
       owner,
     });
     try {
@@ -81,7 +83,7 @@ export class EventService {
     }));
   }
 
-  async getById(id: string) {
+  async getById(id: string, userId?: string) {
     try {
       const [event, memberCount] = await Promise.all([
         this.eventRepo.findOneOrFail({
@@ -97,8 +99,12 @@ export class EventService {
           },
         }),
       ]);
+
+      const isOwner = userId ? event.owner.id === userId : false;
+
       return {
         ...event,
+        isOwner,
         memberCount,
       };
     } catch (e) {

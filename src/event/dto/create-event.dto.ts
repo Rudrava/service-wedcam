@@ -12,6 +12,16 @@ export class CreateEventDto {
   @ApiProperty()
   description: string;
 
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty()
+  venue: string;
+
+  @IsNumber()
+  @IsNotEmpty()
+  @ApiProperty()
+  estimatedParticipants: number;
+
   @IsNumber()
   @IsNotEmpty()
   @ApiProperty()

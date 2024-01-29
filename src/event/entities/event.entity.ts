@@ -41,6 +41,14 @@ export class Event {
   })
   members: EventMember[];
 
+  @Column()
+  venue: string;
+
+  @Column({
+    name: 'estimated_participants',
+  })
+  estimatedParticipants: number;
+
   @CreateDateColumn({
     default: () => 'CURRENT_TIMESTAMP(6)',
   })
