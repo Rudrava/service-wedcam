@@ -1,4 +1,10 @@
-import { Body, Controller, Patch, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Patch,
+  UseGuards,
+  UseInterceptors,
+} from '@nestjs/common';
 import {
   ApiBadRequestResponse,
   ApiBearerAuth,
@@ -12,10 +18,12 @@ import { User } from './entities';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserService } from './user.service';
 import swaggerTags from 'constants/swagger-tags';
+import { ResponseInterceptor } from 'src/lib/interceptors';
 
 @Controller('user')
 @ApiTags(swaggerTags.userTag.name)
 @UseGuards(JwtAuthGuard)
+@UseInterceptors(ResponseInterceptor)
 export class UserController {
   constructor(private readonly userService: UserService) {}
 

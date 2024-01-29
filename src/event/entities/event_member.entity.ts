@@ -1,6 +1,7 @@
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from 'src/user/entities';
 import {
+  Column,
   CreateDateColumn,
   Entity,
   JoinColumn,
@@ -28,6 +29,13 @@ export class EventMember {
   })
   @JoinColumn({ name: 'user_id' })
   user: User;
+
+  @Column({
+    type: Boolean,
+    name: 'is_owner',
+    default: false,
+  })
+  isOwner: boolean;
 
   @CreateDateColumn({
     default: () => 'CURRENT_TIMESTAMP(6)',

@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  UseGuards,
+  UseInterceptors,
+} from '@nestjs/common';
 import {
   ApiBadRequestResponse,
   ApiBearerAuth,
@@ -12,10 +20,12 @@ import { User } from 'src/user/entities';
 import { CreateEventDto } from './dto/create-event.dto';
 import { EventService } from './event.service';
 import swaggerTags from 'constants/swagger-tags';
+import { ResponseInterceptor } from 'src/lib/interceptors';
 
 @Controller('event')
 @UseGuards(JwtAuthGuard)
 @ApiTags(swaggerTags.eventTag.name)
+@UseInterceptors(ResponseInterceptor)
 export class EventController {
   constructor(private readonly eventService: EventService) {}
 
@@ -49,5 +59,25 @@ export class EventController {
   @Get('/:id/members')
   getMembers(@Param('id') id: string) {
     return this.eventService.getMembers(id);
+  }
+
+  @ApiUnauthorizedResponse()
+  @ApiBadRequestResponse()
+  @ApiBearerAuth()
+  @Get('/mine')
+  getMyEvents(@CurrentUser() user: User) {
+    return this.eventService.getUsersEvents(user.id);
+  }
+
+  @ApiUnauthorizedResponse()
+  @ApiBadRequestResponse()
+  @ApiBearerAuth()
+  @ApiParam({
+    name: 'id',
+    required: true,
+  })
+  @Get('/:id')
+  getEventById(@Param('id') id: string) {
+    return this.eventService.getById(id);
   }
 }
