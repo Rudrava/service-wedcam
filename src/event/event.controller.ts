@@ -1,7 +1,8 @@
-import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
   ApiBearerAuth,
+  ApiParam,
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
@@ -24,5 +25,29 @@ export class EventController {
   @Post()
   create(@CurrentUser() user: User, @Body() body: CreateEventDto) {
     return this.eventService.create(user.id, body);
+  }
+
+  @ApiUnauthorizedResponse()
+  @ApiBadRequestResponse()
+  @ApiBearerAuth()
+  @ApiParam({
+    name: 'id',
+    required: true,
+  })
+  @Get('/:id/join')
+  joinEvent(@CurrentUser() user: User, @Param('id') id: string) {
+    return this.eventService.join(id, user.id);
+  }
+
+  @ApiUnauthorizedResponse()
+  @ApiBadRequestResponse()
+  @ApiBearerAuth()
+  @ApiParam({
+    name: 'id',
+    required: true,
+  })
+  @Get('/:id/members')
+  getMembers(@Param('id') id: string) {
+    return this.eventService.getMembers(id);
   }
 }

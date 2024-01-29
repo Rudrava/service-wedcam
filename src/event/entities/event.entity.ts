@@ -7,9 +7,11 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { EventMember } from './event_member.entity';
 
 @Entity({ name: 'event' })
 export class Event {
@@ -34,6 +36,11 @@ export class Event {
   })
   endAt: Date;
 
+  @OneToMany(() => EventMember, (eventMember) => eventMember.event, {
+    nullable: true,
+  })
+  members: EventMember[];
+
   @CreateDateColumn({
     default: () => 'CURRENT_TIMESTAMP(6)',
   })
@@ -45,7 +52,10 @@ export class Event {
   })
   public updated_at: Date;
 
-  @ManyToOne(() => User)
+  @ManyToOne(() => User, {
+    eager: true,
+    nullable: false,
+  })
   @JoinColumn({ name: 'owner_id' })
   owner: User;
 

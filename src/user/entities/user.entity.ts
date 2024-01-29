@@ -1,9 +1,11 @@
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { EventMember } from 'src/event/entities/event_member.entity';
 import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -46,6 +48,11 @@ export class User {
     default: EUserType.user,
   })
   userType: EUserType;
+
+  @OneToMany(() => EventMember, (eventMember) => eventMember.user, {
+    nullable: true,
+  })
+  events: EventMember[];
 
   @CreateDateColumn({
     default: () => 'CURRENT_TIMESTAMP(6)',

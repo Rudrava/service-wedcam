@@ -27,7 +27,7 @@ export class UserService {
     return user;
   }
 
-  private async findOnyById(id: string) {
+  async findOnyById(id: string) {
     try {
       const user = await this.userRepo.findOneOrFail({
         where: {
