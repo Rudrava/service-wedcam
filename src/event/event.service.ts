@@ -120,7 +120,9 @@ export class EventService {
         },
       },
     });
-
-    return events.map((e) => ({ ...e.event, isOwner: e.isOwner }));
+    return events.map((e) => ({
+      ...e.event,
+      isOwner: e.isOwner,
+    }));
   }
 }
