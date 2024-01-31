@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
+  ApiOperation,
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
@@ -30,6 +31,10 @@ export class AuthController {
   logger = new Logger(AuthController.name);
   constructor(private readonly auth: AuthService) {}
   @Post('/login')
+  @ApiOperation({
+    description:
+      'Logs in the user, if email DNE then creates a new one and logs in',
+  })
   async login(@Body() data: LoginDto) {
     return this.auth.login(data);
   }
@@ -38,6 +43,9 @@ export class AuthController {
   @ApiUnauthorizedResponse()
   @ApiBearerAuth()
   @Get('/me')
+  @ApiOperation({
+    description: 'Gets the logged in user via the user token',
+  })
   async getMe(@CurrentUser() user: User) {
     return user;
   }

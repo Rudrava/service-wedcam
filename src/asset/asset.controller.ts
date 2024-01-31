@@ -7,7 +7,13 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { ApiBearerAuth, ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiConsumes,
+  ApiOperation,
+  ApiTags,
+} from '@nestjs/swagger';
 import swaggerTags from 'constants/swagger-tags';
 import { JwtAuthGuard } from 'src/auth/jwt';
 import { CurrentUser } from 'src/lib/decorators';
@@ -36,6 +42,10 @@ export class AssetController {
         eventId: { type: 'string' },
       },
     },
+  })
+  @ApiOperation({
+    description: 'WARNING THIS IS STILL UNDER DEVELOPMENT',
+    deprecated: true,
   })
   @Post('/upload')
   @UseInterceptors(
