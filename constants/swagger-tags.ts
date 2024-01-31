@@ -11,6 +11,10 @@ const authTag: Tag = {
 const userTag: Tag = {
   name: 'User',
 };
+const assetTag: Tag = {
+  name: 'Assets',
+  description: 'assets collection',
+};
 const adminTag: Tag = {
   name: 'Admin',
 };
@@ -24,4 +28,5 @@ export default {
   userTag,
   adminTag,
   eventTag,
+  assetTag,
 };

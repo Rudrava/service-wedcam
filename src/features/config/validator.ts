@@ -14,4 +14,8 @@ export const validationSchema: joi.ObjectSchema<Record<string, string>> =
     JWT_SECRET: joi.string().required(),
     JWT_EXPIRE_AFTER: joi.string().required(),
     JWT_ISSUER: joi.string().required(),
+    FIREBASE_API_KEY: joi.string().required(),
+    FIREBASE_AUTH_DOMAIN: joi.string().required(),
+    FIREBASE_PROJECT_ID: joi.string().required(),
+    FIREBASE_STORAGE_BUCKET: joi.string().required(),
   });
